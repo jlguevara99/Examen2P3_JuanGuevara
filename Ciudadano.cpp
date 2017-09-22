@@ -13,9 +13,14 @@ int Ciudadano::getEdad(){
 }
 
 string Ciudadano::toString(){
-	return nombre;
+	return nombre+" - "+fecha+" - "+sangre; 
 }
 
 double Ciudadano::getNumeros(){
 	return numeros;
 }
+
+int Ciudadano::getBandera(){
+	return bandera;
+}
+

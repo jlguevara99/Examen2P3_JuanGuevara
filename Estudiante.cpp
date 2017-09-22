@@ -14,7 +14,7 @@ Estudiante::Estudiante(string pnam, string fec, int ed, double al, string co, st
 	quirk = quir;
 	numeros = prom;
 	classroom = clas;
-
+	bandera = 2;
 
 }
 

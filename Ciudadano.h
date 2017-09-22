@@ -17,12 +17,14 @@ class Ciudadano{
 		string sangre;
 		Quirk* quirk;
 		double numeros;
+		int bandera;
 	public:
 		Ciudadano();
 		double getNumeros();
 		string getNombre();
 		int getEdad();
 		string toString();
+		int getBandera();
 
 
 

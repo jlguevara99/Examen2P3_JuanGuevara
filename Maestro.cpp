@@ -16,7 +16,7 @@ Maestro::Maestro(string nom,string fec,int ed,double al,string cp,string co,stri
 	departamento = dep;
 	alias = ali;
 	numeros = suel;
-
+	bandera = 1;
 }
 
 double Maestro::getSueldo(){

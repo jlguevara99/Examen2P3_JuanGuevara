@@ -9,6 +9,8 @@
 #include "Transform.h"
 #include "Mutant.h"
 #include <typeinfo>
+#include <fstream>
+
 
 using namespace std;
 
@@ -166,11 +168,14 @@ int main(){
 		}else if(opcion == 5){
 			int tam = lista.size();
 			for(int i = 1; i <= tam; i++) {
-				if(typeid(*(lista.get(tam,i)))==typeid(Maestro)){
+				/*if(typeid(*lista.get(tam,i))==typeid(Maestro)){
 					cout<<i<<". "<<lista.get(tam,i)->getNombre()<<endl;
 					
+				}*/
+				//cout<<i<<". "<<lista.get(tam,i)->getNombre()<<endl;
+				if(lista.get(tam,i)->getBandera() == 1){
+					cout<<i<<". "<<lista.get(tam,i)->getNombre()<<endl;
 				}
-				cout<<i<<". "<<lista.get(tam,i)->getNombre()<<endl;
 				
 			}
 		}else if(opcion == 6){
@@ -178,18 +183,22 @@ int main(){
 			int tam = lista.size();
 			for(int i = 1; i <= tam ; i++) {
 				 temporal = lista.get(tam,i);
-				if(typeid(*temporal)==typeid(Estudiante)){
+				/*if(typeid(*lista.get(tam,i))==typeid(Estudiante)){
 					
 					cout<<i<<". "<<lista.get(tam,i)->getNombre()<<endl;
-				}
+				}*/
+				if(lista.get(tam,i)->getBandera() == 2){
 				cout<<i<<". "<<lista.get(tam,i)->getNombre()<<endl;
+				}
 				
 			}
 		}else if(opcion == 7){
 			int tam = lista.size();
 			double acumulador = 0;
 			for(int i = 1; i <= tam; i++) {
+				if(lista.get(tam,i)->getBandera() == 1){
 				acumulador += lista.get(tam,i)->getNumeros();
+				}
 			}
 			double promedio;
 			promedio = acumulador/tam;
@@ -198,15 +207,25 @@ int main(){
 			int tam = lista.size();
 			double acumulador = 0;
 			for(int i = 1; i <= tam; i++) {
+				if(lista.get(tam,i)->getBandera() == 2){
 				acumulador += lista.get(tam,i)->getNumeros();
+				}
 			}
 			double promedio;
 			promedio = acumulador/tam;
 			cout<<"El promedio es: "<<promedio<<endl;
 		}else if(opcion == 9){
-
+			int tam = lista.size();
+			for(int i = 1; i <= tam; i++) {
+				cout<<i<<". "<<lista.get(tam,i)->getNombre()<<endl;
+			}
 		}else if(opcion == 10){
-
+			int tam = lista.size();
+			ofstream archivo("registro.txt",ios::app);
+			archivo<<"Nuevo: "<<"\n";
+			for(int i = 1; i <= tam; i++) {
+				archivo<<lista.get(tam,i)->toString()<<"\n";
+			}
 		}else if(opcion == 11){
 			salir = false;
 			cout<<"Gracias Ana :( "<<endl;
@@ -224,6 +243,8 @@ int main(){
 //menu
 int menu(){
 	cout<<endl;
+	cout<<"	MENU"<<endl;
+	cout<<"----------------------------------------------"<<endl;
 	cout<<"1. Contratar Maestro"<<endl;
 	cout<<"2. Despedir Maestro"<<endl;
 	cout<<"3. Matricular Alumno"<<endl;
@@ -235,6 +256,7 @@ int menu(){
 	cout<<"9. Listar alumnos por departamento"<<endl;
 	cout<<"10. Guardar registros en txt"<<endl;
 	cout<<"11. Salir"<<endl;
+	cout<<"-----------------------------------------------"<<endl;
 	cout<<endl;
 	int opcion;
 	cin>>opcion;
