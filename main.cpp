@@ -146,7 +146,8 @@ int main(){
 			double promedio;
 			cin>>promedio;
 
-			Quirk* qui = new Mutant("Im sorry");
+			Quirk* qui  =  new Mutant("Im sorry");
+			
 
 			Estudiante* alumno = new Estudiante(nom,fecha,edad,altura,colorP, colorO,likes,dislikes,sangre,qui,promedio,"clase 1");
 
@@ -194,25 +195,30 @@ int main(){
 			}
 		}else if(opcion == 7){
 			int tam = lista.size();
+			int contador = 0;
 			double acumulador = 0;
 			for(int i = 1; i <= tam; i++) {
 				if(lista.get(tam,i)->getBandera() == 1){
-				acumulador += lista.get(tam,i)->getNumeros();
+					acumulador += lista.get(tam,i)->getNumeros();
+					contador++;
 				}
 			}
 			double promedio;
-			promedio = acumulador/tam;
+			promedio = acumulador/contador;
 			cout<<"El Sueldo es: "<<promedio<<endl;
 		}else if(opcion == 8){
 			int tam = lista.size();
+			int contador = 0;
+
 			double acumulador = 0;
 			for(int i = 1; i <= tam; i++) {
 				if(lista.get(tam,i)->getBandera() == 2){
-				acumulador += lista.get(tam,i)->getNumeros();
+					acumulador += lista.get(tam,i)->getNumeros();
+					contador++;
 				}
 			}
 			double promedio;
-			promedio = acumulador/tam;
+			promedio = acumulador/contador;
 			cout<<"El promedio es: "<<promedio<<endl;
 		}else if(opcion == 9){
 			int tam = lista.size();
@@ -224,11 +230,16 @@ int main(){
 			ofstream archivo("registro.txt",ios::app);
 			archivo<<"Nuevo: "<<"\n";
 			for(int i = 1; i <= tam; i++) {
+				if(lista.get(tam,i)->getBandera() == 1){
+					archivo<<"(Maestro)  \n";
+				}else{
+					archivo<<"(EStudiante) \n";
+				}
 				archivo<<lista.get(tam,i)->toString()<<"\n";
 			}
 		}else if(opcion == 11){
 			salir = false;
-			cout<<"Gracias Ana :( "<<endl;
+			cout<<"Gracias Ana :v "<<endl;
 		}
 
 	} while (salir);
