@@ -118,8 +118,12 @@ int main(){
 				cout<<"Posicion incorrecta"<<endl;
 				cin>>pos;
 			}
-			lista.remove(tam,pos);
-			cout<<"Ciudadano eliminado"<<endl;
+			if(lista.get(tam,pos)->getBandera() == 1){
+				lista.remove(tam,pos);
+				cout<<"Maestro eliminado"<<endl;
+			}else{
+				cout<<"No es un Maestro"<<endl;
+			}
 		}else if(opcion == 3){//opcion 3
 			string nom, fecha,colorP,colorO, likes, dislikes, sangre;
 			int edad;
@@ -163,9 +167,13 @@ int main(){
 
 				cin>>pos;
 			}
-
-			lista.remove(tam, pos);
-			cout<<"Ciudadano Eliminado"<<endl;
+			if(lista.get(tam,pos)->getBandera() == 2){
+		
+				lista.remove(tam, pos);
+				cout<<"Estudiante Eliminado"<<endl;
+			}else{
+				cout<<"No es un Estudiante"<<endl;
+			}
 		}else if(opcion == 5){
 			int tam = lista.size();
 			for(int i = 1; i <= tam; i++) {
