@@ -231,9 +231,9 @@ int main(){
 			archivo<<"Nuevo: "<<"\n";
 			for(int i = 1; i <= tam; i++) {
 				if(lista.get(tam,i)->getBandera() == 1){
-					archivo<<"(Maestro)  \n";
+					archivo<<"(Maestro) ->";
 				}else{
-					archivo<<"(EStudiante) \n";
+					archivo<<"(Estudiante) ->";
 				}
 				archivo<<lista.get(tam,i)->toString()<<"\n";
 			}
